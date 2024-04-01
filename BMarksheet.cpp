@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-// chatGPT 
+// chatGPT
 class Marksheet
 {
     int sno;
