@@ -3,11 +3,19 @@
 #include <string>
 using namespace std;
 
+// User defined manipulator
+ostream &p(ostream &output)
+{
+    output<<setw(20)<<left;
+    output<<setw(20)<<right;
+    return output;
+}
+
 // chatGPT
 class Marksheet
 {
     int sno;
-    int Int_marks[10], Ext_marks[10], total[10], gTotal;
+    double Int_marks[10], Ext_marks[10], total[10], gTotal;
     double percentage;
     char sname[20], cname[10], grade;
     string subname[10];
@@ -67,17 +75,26 @@ void Marksheet::display()
 {
     cout << setw(35) << setfill('-') << "-" << endl;
     cout << setfill(' ');
-    cout << setw(15) << left << "Seat No:" << setw(20) << right << sno << endl;
-    cout << setw(15) << left << "Student Name:" << setw(20) << right << sname << endl;
-    cout << setw(15) << left << "Class:" << setw(20) << right << cname << endl;
-    cout << setw(15) << left << "Subject" << setw(20) << right << "Total" << endl;
+    cout << p << "Seat No:"<< sno << endl;
+    cout << p << "Student Name:"<< sname << endl;
+    cout << p << "Class:"<< cname << endl;
+    cout << p << "Subject"<< "Total" << endl;
+    // cout << setfill(' ');
+    // cout << setw(15) << left << "Seat No:" << setw(20) << right << sno << endl;
+    // cout << setw(15) << left << "Student Name:" << setw(20) << right << sname << endl;
+    // cout << setw(15) << left << "Class:" << setw(20) << right << cname << endl;
+    // cout << setw(15) << left << "Subject" << setw(20) << right << "Total" << endl;
     for (int i = 0; i < 5; ++i)
     {
         cout << setw(15) << left << subname[i] << setw(20) << right << total[i] << endl;
     }
-    cout << setw(15) << left << "Grand Total:" << setw(20) << right << gTotal << endl;
-    cout << setw(15) << left << "Percentage:" << setw(20) << right << fixed << setprecision(2) << percentage << "%" << endl;
-    cout << setw(15) << left << "Grade:" << setw(20) << right << grade << endl;
+    // cout << setw(15) << left << "Grand Total:" << setw(20) << right << gTotal << endl;
+    // cout << setw(15) << left << "Percentage:" << setw(20) << right << fixed << setprecision(2) << percentage << p << endl;
+    // cout << setw(15) << left << "Grade:" << setw(20) << right << grade << endl;
+    // cout << setw(35) << setfill('-') << "-" << endl;
+    cout << p << "Grand Total:"<< gTotal << endl;
+    cout << p << "Percentage:"<< fixed << setprecision(2) << percentage << p << endl;
+    cout << p << "Grade:"<< grade << endl;
     cout << setw(35) << setfill('-') << "-" << endl;
 }
 
