@@ -10,7 +10,7 @@ inline double mean(int a[], int n)
     {
         x = x + a[i];
     }
-    cout << x << endl;
+    // cout << x << endl;
     m = x / n;
     return m;
 }
@@ -26,34 +26,44 @@ inline double median(int a[], int n)
         return a[(n - 1) / 2]; // as counting of an array start from 0 so, its n-1.
     }
 }
+
 inline int mode(int a[], int n)
 {
-    int maxCout = 0, modeValue = -1;
+    int max = 0, moda, number, count;
     for (int i = 0; i < n; i++)
     {
-        int count = 0;
+        number = a[i];
+        count = 0;
         for (int j = 0; j < n; j++)
         {
-            if (a[j] == a[i])
+            if (number == a[j])
             {
-                ++count;
+                count++;
+            }
+
+            if (count > max)
+            {
+                max = count;
+                if (max == 1)
+                {
+                    moda = a[0];
+                }
+                else
+                {
+                    moda = number;
+                }
             }
         }
-        if (count > maxCout)
-        {
-            maxCout = count;
-            modeValue = a[i];
-        }
-
-        return modeValue;
     }
+    return moda;
 }
 
 int main()
 {
     int arr[50];
     int size;
-    double mn, md, mod;
+    double mn, md;
+    int moda;
     cout << "Enter size of array: ";
     cin >> size;
     for (int i = 0; i < size; i++)
@@ -65,8 +75,8 @@ int main()
     cout << "mean: " << mn << endl;
     md = median(arr, size);
     cout << "median: " << md << endl;
-    mod = mode(arr, size);
-    cout << "mode: " << mod << endl;
+    moda = mode(arr, size);
+    cout << "mode: " << moda << endl;
 
     return 0;
 }
